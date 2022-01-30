@@ -9,7 +9,7 @@ const fs = require("fs")
 const {logging} = require("googleapis/build/src/apis/logging")
 
 const app = express()
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 const PATH_TO_PDF = `${__dirname}/uploads`
 
 // const limitFileSize = 1.2 * 1024 * 1024 * 1024
