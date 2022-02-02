@@ -1,12 +1,11 @@
 const express = require("express")
-const fileUpload = require("express-fileupload")
 const cors = require("cors")
+const fs = require("fs")
+const fileUpload = require("express-fileupload")
 
 const {authorize} = require('./api/authAPI')
 const {uploadFiles} = require('./api/actionsAPI')
 const {bytesToMB, deleteFileFromUploads, clearServerUploadFolder} = require("./utils")
-const fs = require("fs")
-const {logging} = require("googleapis/build/src/apis/logging")
 
 const app = express()
 const PORT = process.env.PORT || 8000
@@ -17,7 +16,7 @@ const limitFileSize = 300 * 1024 * 1024
 
 app.use(cors())
 app.use(fileUpload({
-   uploadTimeout: 50000,
+   uploadTimeout: 30000,
    limits: {fileSize: limitFileSize}, // 41.94 MB
    abortOnLimit: true,
    responseOnLimit: `File is too big, max. size ${bytesToMB(limitFileSize)} MB`,
