@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@google-cloud/local-auth": "^1.0.1",
+    "async": "^3.2.3",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-fileupload": "^1.2.1",

@@ -4,7 +4,7 @@ const fs = require("fs")
 const fileUpload = require("express-fileupload")
 
 const {authorize} = require('./api/authAPI')
-const {uploadFiles} = require('./api/actionsAPI')
+const {uploadFiles, getFileUrl} = require('./api/actionsAPI')
 const {bytesToMB, deleteFileFromUploads, clearServerUploadFolder} = require("./utils")
 
 const app = express()
@@ -61,6 +61,24 @@ app.post("/save", (req, res) => {
 app.post("/delete", (req, res) => {
    deleteFileFromUploads(`${req.body.orderId}.pdf`)
    res.status(200).send("File Deleted")
+})
+
+app.post('/get-link', (req, res) => {
+   const orderId = req.body.orderId
+
+   const responseToClient = response => {
+      if (response.type === 'success') {
+         res.status(200).send(response.data)
+      }
+      if (response.type === 'error') {
+         res.status(500).send(response.data)
+      }
+   }
+
+   fs.readFile("credentials.json", (err, content) => {
+      if (err) return console.log("Error loading client secret file:", err)
+      authorize(JSON.parse(content), (auth) => getFileUrl(auth, orderId, responseToClient))
+   })
 })
 
 app.listen(PORT, () => {

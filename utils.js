@@ -1,6 +1,5 @@
 const fs = require("fs")
 const moment = require("moment")
-const {google} = require("googleapis")
 
 const CLEAR_UPLOAD_FOLDER_INTERVAL_MS = 1800000 // 30min
 const CLEAR_UPLOAD_FOLDER_FILE_AGE_MIN = 30
@@ -47,21 +46,3 @@ module.exports = {
    deleteFileFromUploads,
    clearServerUploadFolder
 }
-
-// async function uploadFile(auth) {
-//    const drive = google.drive({version: 'v3', auth});
-//    try {
-//       const response = await drive.files.create({
-//          requestBody: {
-//             mimeType: 'application/pdf',
-//          },
-//          media: {
-//             mimeType: 'application/pdf',
-//             body: fs.createReadStream(filePath)
-//          }
-//       })
-//       console.log(response.data)
-//    } catch (e) {
-//       console.log(e)
-//    }
-// }
