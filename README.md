@@ -1,10 +1,5 @@
-# File Upload Service for Typography Web App #
-#### January 2022 ####
----
-## My first experience using Express.js and Google API. ##
-#### What I used: ####
-- [Express](https://expressjs.com/)
-- [Google Drive API](https://developers.google.com/drive)
+#### Context:
+__January 2022.__ This service was developed to handle file uploads. GUI of POC for typography business online store is located [here](https://github.com/dcjwu/typographyPOC-react).
 
 #### Description: ####
 - Upload file to server
@@ -12,6 +7,9 @@
 - Delete file from server after it is pushed to Google Drive
 - Clear 'uploads' folder for all files older than 30min every 30min
 
----
-### Status: ####
-_Project is finished._
+#### Technologies used:
+- Express.js
+- Google Drive API
+
+#### Status:
+POC is finished.
